@@ -42,8 +42,9 @@ To convert an RGB Forest Fire image to grayscale, the three color channels are c
 Grayscale = 0.2989 * Red + 0.5870 * Green + 0.1140 * Blue
 
 These weights are chosen because they mimic the human eye's sensitivity to different colors. The human eye is most sensitive to green light, followed by red light, and then blue light.
+<br> <img width="395" alt="RGB" src="https://github.com/nimradev064/Forest-Fire-Classification/assets/157350960/c95a9536-d33d-43b2-8237-86ed09f625df">
 
-3 : Grayscale images convert into Normalization:
+2 : Grayscale images convert into Normalization:
 
 Image normalization is the process of transforming an image so that its pixel values have a mean of zero and a standard deviation of one. This is often done before training a machine learning model on images, as it can help the model to learn more effectively.
 
@@ -53,48 +54,49 @@ Subtract the mean of the image from each pixel.
 Divide each pixel by the standard deviation of the image.
 
 This will result in an image with pixel values that are centered around zero and have a standard deviation of one.
+<br> <img width="398" alt="Screenshot 2024-02-14 124245" src="https://github.com/nimradev064/Forest-Fire-Classification/assets/157350960/de00b156-28ba-4bea-ae34-d8132bec862f">
 
 ### Model Buiding:
 1 : CNN model with Tensorflow:
 The TensorFlow CNN model described above is a simple but effective model for image classification. It consists of the following layers:
-Rescaling layer (1./255, input_shape=(img_height, img_width, 3)): Scales the input images down to a range of [0, 1].
-Conv2D layer (16 filters, 3x3 kernel size, same padding, ReLU activation function): Extracts low-level features from the image, such as edges and corners.
-MaxPooling2D layer: Reduces the dimensionality of the feature maps by reducing the size of each feature map by half.
-Conv2D layer (32 filters, 3x3 kernel size, same padding, ReLU activation function): Extracts higher-level features from the image, such as shapes and textures.
-MaxPooling2D layer: Reduces the dimensionality of the feature maps by reducing the size of each feature map by half.
-Conv2D layer (64 filters, 3x3 kernel size, same padding, ReLU activation function): Extracts even higher-level features from the image, such as objects and scenes.
-MaxPooling2D layer: Reduces the dimensionality of the feature maps by reducing the size of each feature map by half.
-Flatten layer: Converts the feature maps into a 1D vector.
-Dense layer (128 units, ReLU activation function): Learns higher-level features from the flattened feature maps.
-Dense layer (num_classes): Outputs the probability distribution over the num_classes output classes.
+* Rescaling layer (1./255, input_shape=(img_height, img_width, 3)): Scales the input images down to a range of [0, 1].
+* Conv2D layer (16 filters, 3x3 kernel size, same padding, ReLU activation function): Extracts low-level features from the image, such as edges and corners.
+* MaxPooling2D layer: Reduces the dimensionality of the feature maps by reducing the size of each feature map by half.
+* Conv2D layer (32 filters, 3x3 kernel size, same padding, ReLU activation function): Extracts higher-level features from the image, such as shapes and textures.
+* MaxPooling2D layer: Reduces the dimensionality of the feature maps by reducing the size of each feature map by half.
+* Conv2D layer (64 filters, 3x3 kernel size, same padding, ReLU activation function): Extracts even higher-level features from the image, such as objects and scenes.
+* MaxPooling2D layer: Reduces the dimensionality of the feature maps by reducing the size of each feature map by half.
+* Flatten layer: Converts the feature maps into a 1D vector.
+* Dense layer (128 units, ReLU activation function): Learns higher-level features from the flattened feature maps.
+* Dense layer (num_classes): Outputs the probability distribution over the num_classes output classes.
 To train your model, you would simply need to compile it using an optimizer and loss function of your choice. Then, you could train it on your training data using the model.fit() method. Once the model is trained, you could evaluate it on your test data using the model.evaluate() method.
 2  VGG16 :
 The model is used for binary image classification, meaning that it will output the probability that an image belongs to one of two classes.
 The code works as follows:
-The IMG_SIZE variable is defined to specify the height and width of the input images.
-The vgg16_weight_path variable is defined to specify the path to the VGG16 pre-trained weights file.
-The base_model variable is created by loading the VGG16 pre-trained model, but excluding the top layer. This is because the top layer is specific to the dataset that the model was trained on, and we want to train our own top layer for our specific binary image classification task.
-The model_vgg16 variable is created by creating a Sequential model and adding the base_model to it.
-A Flatten layer is added to the model to convert the feature maps from the base_model into a 1D vector.
-A Dropout layer is added to the model to prevent overfitting.
-A Dense layer with 1 unit and a sigmoid activation function is added to the model as the output layer. This layer will output the probability that an image belongs to one of the two classes.
-The trainable attribute of the base_model is set to False. This means that the weights of the base_model will not be updated during training, which will make the training process more efficient.
-The model is compiled using the binary_crossentropy loss function and the Adam optimizer. The accuracy metric is also specified, so that we can track the accuracy of the model during training and evaluation.
-This model is likely to achieve good performance on a variety of binary image classification tasks. However, it is important to note that the VGG16 pre-trained weights were trained on a dataset that contains a wide variety of images. If your dataset is very different from the dataset that the VGG16 model was trained on, then you may want to consider fine-tuning the model on your own dataset.
-To fine-tune the model, you would simply need to set the trainable attribute of the base_model to True and train the model as usual. This will allow the model to learn new weights that are specific to your dataset.
+* The IMG_SIZE variable is defined to specify the height and width of the input images.
+* The vgg16_weight_path variable is defined to specify the path to the VGG16 pre-trained weights file.
+* The base_model variable is created by loading the VGG16 pre-trained model, but excluding the top layer. This is because the top layer is specific to the dataset that the model was trained on, and we want to train our own top layer for our specific binary image classification task.
+* The model_vgg16 variable is created by creating a Sequential model and adding the base_model to it.
+* A Flatten layer is added to the model to convert the feature maps from the base_model into a 1D vector.
+* A Dropout layer is added to the model to prevent overfitting.
+* A Dense layer with 1 unit and a sigmoid activation function is added to the model as the output layer. This layer will output the probability that an image belongs to one of the two classes.
+* The trainable attribute of the base_model is set to False. This means that the weights of the base_model will not be updated during training, which will make the training process more efficient.
+* The model is compiled using the binary_crossentropy loss function and the Adam optimizer. The accuracy metric is also specified, so that we can track the accuracy of the model during training and evaluation.
+* This model is likely to achieve good performance on a variety of binary image classification tasks. However, it is important to note that the VGG16 pre-trained weights were trained on a dataset that contains a wide variety of images. If your dataset is very different from the dataset that the VGG16 model was trained on, then you may want to consider fine-tuning the model on your own dataset.
+* To fine-tune the model, you would simply need to set the trainable attribute of the base_model to True and train the model as usual. This will allow the model to learn new weights that are specific to your dataset.
 3: Resnet Network:
 The model is built using the following steps:
-The resnet_50 variable is created by loading the ResNet50 pre-trained model.
-The x variable is assigned to the output of the resnet_50 model.
-A GlobalAveragePooling2D layer is added to the model. This layer averages the values of each feature map over the spatial dimensions.
-A Dense layer with 512 units and a ReLU activation function is added to the model. This layer learns higher-level features from the global average pooled features.
-A Dropout layer with a rate of 0.5 is added to the model. This layer randomly drops out neurons during training to prevent overfitting.
-A Dense layer with 256 units and a ReLU activation function is added to the model. This layer learns even higher-level features from the dropout layer.
-A Dropout layer with a rate of 0.5 is added to the model. This layer randomly drops out neurons during training to prevent overfitting.
-A Dense layer with num_classes units and a softmax activation function is added to the model. This layer outputs the probability distribution over the num_classes output classes.
-The model is created by passing the inputs and outputs to the Model class.
-This model is likely to achieve good performance on a variety of image classification tasks. However, it is important to note that the ResNet50 pre-trained weights were trained on a dataset that contains a wide variety of images. If your dataset is very different from the dataset that the ResNet50 model was trained on, then you may want to consider fine-tuning the model on your own dataset.
-To fine-tune the model, you would simply need to set the trainable attribute of the resnet_50 model to True and train the model as usual. This will allow the model to learn new weights that are specific to your dataset.
+* The resnet_50 variable is created by loading the ResNet50 pre-trained model.
+* The x variable is assigned to the output of the resnet_50 model.
+* A GlobalAveragePooling2D layer is added to the model. This layer averages the values of each feature map over the spatial dimensions.
+* A Dense layer with 512 units and a ReLU activation function is added to the model. This layer learns higher-level features from the global average pooled features.
+* A Dropout layer with a rate of 0.5 is added to the model. This layer randomly drops out neurons during training to prevent overfitting.
+* A Dense layer with 256 units and a ReLU activation function is added to the model. This layer learns even higher-level features from the dropout layer.
+* A Dropout layer with a rate of 0.5 is added to the model. This layer randomly drops out neurons during training to prevent overfitting.
+* A Dense layer with num_classes units and a softmax activation function is added to the model. This layer outputs the probability distribution over the num_classes output classes.
+* The model is created by passing the inputs and outputs to the Model class.
+* This model is likely to achieve good performance on a variety of image classification tasks. However, it is important to note that the ResNet50 pre-trained weights were trained on a dataset that contains a wide variety of images. If your dataset is very different from the dataset that the ResNet50 model was trained on, then you may want to consider fine-tuning the model on your own dataset.
+* To fine-tune the model, you would simply need to set the trainable attribute of the resnet_50 model to True and train the model as usual. This will allow the model to learn new weights that are specific to your dataset.
 
 ### **Technologies used**
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
@@ -110,16 +112,10 @@ To fine-tune the model, you would simply need to set the trainable attribute of 
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 [![Tools used | Postman](https://img.shields.io/badge/Postman-eeeeee?style=for-the-badge&logo=postman&logoColor=FF6C37&labelColor=fefefe)][postman]
-![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
 
 <!-- Tools Used -->
 [PyCharm]: https://code.visualstudio.com/
-[postman]: https://www.postman.com/
 [git]: https://git-scm.com/
 [github]: https://github.com/
-[heroku]: https://www.heroku.com/
-[microsoft_azure]: https://azure.microsoft.com/en-in/features/azure-portal/
 [python]: https://www.python.org/
-[mongodb]: https://www.mongodb.com/
-[flask]: https://flask.palletsprojects.com/en/2.1.x/
 [sklearn]: https://scikit-learn.org/stable/
