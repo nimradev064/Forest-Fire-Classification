@@ -41,7 +41,7 @@ To convert an RGB Forest Fire image to grayscale, the three color channels are c
 
 Grayscale = 0.2989 * Red + 0.5870 * Green + 0.1140 * Blue
 
-These weights are chosen because they mimic the human eye's sensitivity to different colors. The human eye is most sensitive to green light, followed by red light, and then blue light.
+These weights are chosen because they mimic the human eye's sensitivity to different colors. The human eye is most sensitive to green light, followed by red light, and then blue light.<br>
 <br> <img width="395" alt="RGB" src="https://github.com/nimradev064/Forest-Fire-Classification/assets/157350960/c95a9536-d33d-43b2-8237-86ed09f625df">
 
 2 : Grayscale images convert into Normalization:
@@ -53,7 +53,7 @@ To normalize a grayscale image, the following steps are typically taken:
 Subtract the mean of the image from each pixel.
 Divide each pixel by the standard deviation of the image.
 
-This will result in an image with pixel values that are centered around zero and have a standard deviation of one.
+This will result in an image with pixel values that are centered around zero and have a standard deviation of one. <br>
 <br> <img width="398" alt="Screenshot 2024-02-14 124245" src="https://github.com/nimradev064/Forest-Fire-Classification/assets/157350960/de00b156-28ba-4bea-ae34-d8132bec862f">
 
 ### Model Buiding:
@@ -104,8 +104,6 @@ The model is built using the following steps:
 ### **Technologies used**
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)
-![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)
 ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
 
@@ -114,7 +112,6 @@ The model is built using the following steps:
 ![PyCharm](https://img.shields.io/badge/pycharm-143?style=for-the-badge&logo=pycharm&logoColor=black&color=black&labelColor=green)
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
-[![Tools used | Postman](https://img.shields.io/badge/Postman-eeeeee?style=for-the-badge&logo=postman&logoColor=FF6C37&labelColor=fefefe)][postman]
 
 <!-- Tools Used -->
 [PyCharm]: https://code.visualstudio.com/
