@@ -57,7 +57,7 @@ This will result in an image with pixel values that are centered around zero and
 <br> <img width="398" alt="Screenshot 2024-02-14 124245" src="https://github.com/nimradev064/Forest-Fire-Classification/assets/157350960/de00b156-28ba-4bea-ae34-d8132bec862f">
 
 ### Model Buiding:
-1 : CNN model with Tensorflow:
+### CNN model with Tensorflow:
 The TensorFlow CNN model described above is a simple but effective model for image classification. It consists of the following layers:
 * Rescaling layer (1./255, input_shape=(img_height, img_width, 3)): Scales the input images down to a range of [0, 1].
 * Conv2D layer (16 filters, 3x3 kernel size, same padding, ReLU activation function): Extracts low-level features from the image, such as edges and corners.
@@ -70,7 +70,9 @@ The TensorFlow CNN model described above is a simple but effective model for ima
 * Dense layer (128 units, ReLU activation function): Learns higher-level features from the flattened feature maps.
 * Dense layer (num_classes): Outputs the probability distribution over the num_classes output classes.
 To train your model, you would simply need to compile it using an optimizer and loss function of your choice. Then, you could train it on your training data using the model.fit() method. Once the model is trained, you could evaluate it on your test data using the model.evaluate() method. <br>
-2 : VGG16 : <br>
+
+### VGG16 
+<br>
 The model is used for binary image classification, meaning that it will output the probability that an image belongs to one of two classes.
 The code works as follows:
 * The IMG_SIZE variable is defined to specify the height and width of the input images.
@@ -85,7 +87,7 @@ The code works as follows:
 * This model is likely to achieve good performance on a variety of binary image classification tasks. However, it is important to note that the VGG16 pre-trained weights were trained on a dataset that contains a wide variety of images. If your dataset is very different from the dataset that the VGG16 model was trained on, then you may want to consider fine-tuning the model on your own dataset.
 * To fine-tune the model, you would simply need to set the trainable attribute of the base_model to True and train the model as usual. This will allow the model to learn new weights that are specific to your dataset. <br>
 
-3: Resnet Network: <br>
+### Resnet Network: <br>
 The model is built using the following steps:
 * The resnet_50 variable is created by loading the ResNet50 pre-trained model.
 * The x variable is assigned to the output of the resnet_50 model.
