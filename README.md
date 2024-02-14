@@ -72,7 +72,6 @@ The TensorFlow CNN model described above is a simple but effective model for ima
 To train your model, you would simply need to compile it using an optimizer and loss function of your choice. Then, you could train it on your training data using the model.fit() method. Once the model is trained, you could evaluate it on your test data using the model.evaluate() method. <br>
 
 ### VGG16 
-<br>
 The model is used for binary image classification, meaning that it will output the probability that an image belongs to one of two classes.
 The code works as follows:
 * The IMG_SIZE variable is defined to specify the height and width of the input images.
